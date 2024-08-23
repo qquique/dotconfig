@@ -1,0 +1,20 @@
+# General:
+#ignore-empty-password
+show-failed-attempts
+indicator-idle-visible
+
+# Clock:
+clock
+timestr=%H:%M:%S
+datestr=%a, %b %d
+
+# Appearance:
+indicator-caps-lock
+indicator-thickness=20
+indicator-radius=100
+
+# Effects:
+screenshots
+#effect-greyscale
+effect-blur=10x2
+fade-in=1.0

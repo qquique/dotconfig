@@ -1,0 +1,17 @@
+swaybg -i $HOME/Pictures/Wallpapers/wallpaper.jpg -m fill > /dev/null 2>&1 &
+waybar >/dev/null 2>&1 &
+udiskie -t >/dev/null 2>&1 &
+gammastep >/dev/null 2>&1 &
+dunst >/dev/null 2>&1 &
+swayidle -w \
+	timeout 300 'swaylock -C$HOME/.config/swaylock/config' \
+	timeout 600 'wlopm --off \*' \
+	resume 'wlopm --on \*' \
+	before-sleep 'swaylock -C$HOME/.config/swaylock/config' >/dev/null 2>&1 &
+xrdb -load ~/.Xresources >/dev/null 2>&1 &
+solaar -w hide -b solaar 2>&1 &
+wl-paste -t text --watch clipman store --no-persist 2>&1 &
+blueman-applet 2>&1 &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 2>&1 &
+sleep 5 && syncthingtray 2>&1 &
+

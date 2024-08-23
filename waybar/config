@@ -1,0 +1,215 @@
+{
+  "position": "bottom",
+  "height": 24,
+  "modules-left": [
+    "wlr/workspaces",
+    "wlr/taskbar"
+  ],
+  "modules-right": [
+    "bluetooth",
+    "mpd",
+    "idle_inhibitor",
+    "pulseaudio",
+    "backlight",
+    "disk",
+    "network",
+    "cpu",
+    "memory",
+    "temperature",
+    "power-profiles-daemon",
+    "battery",
+    "clock",
+    "tray"
+  ],
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "on-click": "activate"
+  },
+  "wlr/workspaces": {
+    "format": "{icon}",
+    "icon-size": 14,
+    "on-click": "activate",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": ""
+    },
+    "sort-by-number": true
+  },
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "mpd": {
+    "format": "{stateIcon} {artist} - {title} ",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    "unknown-tag": "N/A",
+    "interval": 2,
+    "consume-icons": {
+      "on": " "
+    },
+    "random-icons": {
+      "off": "<span color=\"#f53c3c\"></span> ",
+      "on": " "
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": "1 "
+    },
+    "state-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{:%H:%M %d/%m} "
+  },
+  "cpu": {
+    "format": "{usage:>2}% ",
+    "tooltip": false
+  },
+  "memory": {
+    "format": "{}% "
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "critical-threshold": 80,
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": [
+      ""
+    ],
+    "interval": 5
+  },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "",
+      ""
+    ],
+    "on-scroll-up": "light  -A 1%",
+    "on-scroll-down": "light  -U 1%"
+  },
+  "battery": {
+    "bat": "BAT1",
+    "states": {
+      "good": 60,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{icon}",
+    "format-alt": "{time} {capacity}% {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "tooltip": false
+  },
+  "network": {
+    "interval": 1,
+    "format-wifi": "({signalStrength}%)    {bandwidthDownBytes:>10}",
+    "format-ethernet": " {bandwidthDownBytes:>10}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol",
+    "ignored-sinks": [
+      "Easy Effects Sink"
+    ]
+  },
+  "custom/pacman": {
+    "format": "{} ",
+    "interval": 600,
+    "exec": "checkupdates | wc -l",
+    "exec-if": "exit 0",
+    "tooltip": false
+  },
+  "custom/turbo": {
+    "format": "/ ",
+    "interval": 5,
+    "exec": "grep 1 /sys/devices/system/cpu/cpufreq/boost",
+    "exec-if": "exit 1",
+    "on-click": "turbo.sh toggle"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "{path} {free} ",
+    "path": "/"
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "",
+    "format-connected": " {device_alias}",
+    "on-click": "bluetoothctl power on",
+    "on-click-right": "bluetoothctl power off",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  },
+  "custom/media": {
+    "format": "{icon}{}",
+    "max-length": 45,
+    "return-type": "json",
+    "format-icons": {
+      "Playing": " ",
+      "Paused": " "
+    },
+    "exec": "playerctl -p mpd -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous"
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  }
+}
