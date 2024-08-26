@@ -363,7 +363,7 @@
   <windowRules>
       <windowRule identifier="mpv" matchOnce="true">
         <action name="MoveTo" x="320" y="180" />
-        <action name="ResizeTo" width="1280" y="720" />
+        <action name="ResizeTo" width="1280" height="720" />
       </windowRule>
     <windowRule identifier="org.qutebrowser.qutebrowser" matchOnce="false" serverDecoration="no"/>
     <windowRule identifier="chromium" matchOnce="false" serverDecoration="no"/>
