@@ -1,6 +1,6 @@
 {
   "position": "bottom",
-  "height": 24,
+  "height": 28,
   "modules-left": [
     "wlr/workspaces",
     "wlr/taskbar"
