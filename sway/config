@@ -48,6 +48,7 @@ exec swayidle -w \
 #
 input "1267:12926:ELAN0001:00_04F3:327E_Touchpad" {
      tap enabled
+     scroll_method two_finger
      natural_scroll enabled
 }
 
