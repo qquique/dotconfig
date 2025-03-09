@@ -22,8 +22,10 @@ default_border pixel 2
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output eDP-1 bg /path/to/wallpapers/wallpaper.png fill
 output eDP-1 subpixel rgb
+# needs WLR_RENDERER=vulkan
+output eDP-1 color-profile icc ~/path/to/hdr.icm
 # for games 
-# output eDP-1 max_render_time 1 # for 
+# output eDP-1 max_render_time 1 
 output eDP-1 adaptive_sync on
 #
 # Example configuration:
@@ -263,7 +265,7 @@ exec xrdb -load ~/.Xresources
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
 exec solaar -w hide -b solaar
 exec wl-paste -t text --watch clipman store --no-persist
-floating_maximum_size 1280 x 720
+floating_maximum_size 1600 x 900
 
 #xwayland disable
 
@@ -288,8 +290,19 @@ for_window [title="Editor Settings" instance="Godot_Editor"] floating enable, bo
 for_window [title="Project Settings.*" instance="Godot_Editor"] floating enable, border normal 1
 for_window [title="Connect a Signal to a Method" instance="Godot_Editor"] floating enable, border normal 1
 for_window [title="Connections to method:" instance="Godot_Editor"] floating enable, border normal 1
+# lutris floating
+for_window [title="Log(.*)" app_id="lutris"] floating enable
+# epicgames launcher floating
+for_window [instance="epicgameslauncher.exe"] floating enable
+# udiskie floating
 for_window [class="udiskie"] floating enable
+# firefox floating
+for_window [title="Picture-in-Picture" app_id="firefox"] floating enable
+# pinentry floating
+for_window [class="Pinentry-gtk"] floating enable
+# not lock when fullscreen
 for_window [class="."] inhibit_idle fullscreen
 for_window [app_id="."] inhibit_idle fullscreen
-
+# librewolf Picture in Picture
+for_window [title="Picture-in-Picture" app_id="LibreWolf"] floating enable
 include /etc/sway/config.d/*
