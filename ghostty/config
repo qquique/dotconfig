@@ -47,6 +47,10 @@ font-size = 9
 theme = catppuccin-frappe
 background-opacity = 0.85
 background-blur = true
+cursor-invert-fg-bg = true
+cursor-opacity=0.8
+cursor-style=block
+cursor-style-blink=true
 
 keybind=clear
 keybind = ctrl+shift+a=select_all
