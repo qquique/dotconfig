@@ -76,4 +76,4 @@ keybind = shift+insert=paste_from_selection
 keybind = shift+page_up=scroll_page_up
 keybind = shift+page_down=scroll_page_down
 
-toast-on-clipboard-copy=false
+app-notifications = no-clipboard-copy
